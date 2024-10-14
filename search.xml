@@ -118,6 +118,78 @@
   <entry>
     <title>首次认识函数式编程</title>
     <url>/2024/10/14/%E9%A6%96%E6%AC%A1%E8%AE%A4%E8%AF%86%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><ul>
+<li>函数式是声明式编程的一种，强调做什么而不是怎么做</li>
+<li>函数式编程是一种将函数视为“一等公民”的编程范式。它强调纯函数、不可变性和避免副作用。程序的逻辑主要通过函数组合完成。</li>
+</ul>
+<h2 id="纯函数"><a href="#纯函数" class="headerlink" title="纯函数"></a>纯函数</h2><p>函数的变量只依赖自身的执行上下文，而不会根据作用域链找别的执行上下文, 这样的函数是外界隔离的，也就是没有副作用的。</p>
+<blockquote>
+<p>副作用是指函数在执行的时候，会影响别人的执行上下文，影响外部的状态。</p>
+</blockquote>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//这个函数不是纯的，因为console是通过全局上下文确定的</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">dem</span>(<span class="params">a,b</span>)&#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(a+b)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>这种设计是对代码进行了限制，用自由度换取了后期代码的可维护性。使用纯函数意味着你的函数中<strong>不存在指向不明的 this，不存在对全局变量的引用，不存在对参数的修改</strong></p>
+<h2 id="变量不可变性"><a href="#变量不可变性" class="headerlink" title="变量不可变性"></a>变量不可变性</h2><p>在函数式编程中，不可变性（Immutability）是指：变量一旦创建，就不能被修改。而是通过创建新变量或对象的副本，代替直接修改原变量。这种设计提高了程序的可靠性、可预测性，并避免了共享状态带来的问题。</p>
+<blockquote>
+<p>一旦传入函数的参数是引用类型，那我们必须先进行一次深拷贝。</p>
+</blockquote>
+<h2 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h2><p>higher-order function is a function that either take a function as a argument or returns a function as a result</p>
+<p>Divided to two types : enhancing function, framework function</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Function : enhancing function </span></span><br><span class="line"><span class="comment">//we can reuse the enhancement logic across multiple functions,we can return a array to do more jobs</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">eat</span> = (<span class="params"></span>)=&gt;&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;eat&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">run</span> = (<span class="params"></span>)=&gt;&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;run&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">count</span> = (<span class="params">func</span>)=&gt;&#123;</span><br><span class="line">    <span class="keyword">let</span> count = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> [</span><br><span class="line">        <span class="function">(<span class="params">...args</span>) =&gt;</span>&#123;</span><br><span class="line">            <span class="title function_">func</span>(args)</span><br><span class="line">            count++</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="function">() =&gt;</span>&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(count)</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> [countEat,getCount] = <span class="title function_">count</span>(eat)</span><br><span class="line"><span class="title function_">countEat</span>()</span><br><span class="line"><span class="title function_">countEat</span>()</span><br><span class="line"><span class="title function_">countEat</span>()</span><br><span class="line"><span class="title function_">countEat</span>()</span><br><span class="line"><span class="title function_">getCount</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment">//Function : framework function </span></span><br><span class="line"><span class="comment">//facilitate common tasks and abstract away complexity. those functions allow developer to focus on high-level logic without worrying about the underlying implementation</span></span><br><span class="line"><span class="comment">//for example : we use reduce to implement a map</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">myMap</span> = (<span class="params">arr, callback</span>) =&gt; &#123;</span><br><span class="line">    <span class="keyword">return</span> arr.<span class="title function_">reduce</span>(<span class="function">(<span class="params">pre, cur</span>) =&gt;</span> &#123;</span><br><span class="line">        pre.<span class="title function_">push</span>(<span class="title function_">callback</span>(cur));  <span class="comment">// Push the result from callback</span></span><br><span class="line">        <span class="keyword">return</span> pre;  <span class="comment">// Return the accumulator</span></span><br><span class="line">    &#125;, []);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> b = <span class="title function_">myMap</span>(a, <span class="function">(<span class="params">item</span>) =&gt;</span> item * item);  <span class="comment">// Return value directly</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(b);  <span class="comment">// [1, 4, 9]</span></span><br></pre></td></tr></table></figure></div>
+
+
+<h2 id="函数组合"><a href="#函数组合" class="headerlink" title="函数组合"></a>函数组合</h2><p>Functions composition refers to combining multiple funcitions such that the output of one function becomes the input of the next.  This can chain the functions together to perform complex transformation in a cleaner and more readable way.</p>
+<p>We can define a function called pipe to implement the functions composition</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//functions composition</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">pipe</span> = (<span class="params">...func</span>)=&gt;&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="params">input</span> =&gt;</span> &#123;</span><br><span class="line">        func.<span class="title function_">reduce</span>(<span class="function">(<span class="params">pre,cur</span>)=&gt;</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="title function_">cur</span>(pre)</span><br><span class="line">        &#125;,input)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+
+<h2 id="柯里化"><a href="#柯里化" class="headerlink" title="柯里化"></a>柯里化</h2><p>When a function has two input parameters, the pipe mentioned above cannot use the function as a parameter, because the pipeline has only one entry. At this time, currying is required to convert 1 function with n parameters into n functions with one parameter.</p>
+<p>This makes functions more reusable and allows partial application of arguments.</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//currying </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">curry</span> = (<span class="params">func,arg</span>)=&gt;&#123;</span><br><span class="line">    <span class="keyword">if</span>(!arg)&#123;</span><br><span class="line">        arg = []</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="function">(<span class="params">input</span>) =&gt;</span>&#123;</span><br><span class="line">        arg.<span class="title function_">push</span>(input)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(arg.<span class="property">length</span> &gt;= func.<span class="property">length</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="title function_">func</span>(...arg)</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="title function_">curry</span>(func,arg)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>Once your function is currying, then you can fix several arguments util one argument left ,then you can use the curried function as a arguments of pipe.</p>
+<h2 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h2><div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; curry, pipe, filter, prop &#125; = R;</span><br><span class="line"><span class="comment">// code here</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> *  ex1 </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">// :: String -&gt; Number -&gt; Object -&gt; Boolean</span></span><br><span class="line"><span class="keyword">const</span> propLt = <span class="title function_">curry</span>(<span class="function">(<span class="params">p, c</span>) =&gt;</span> R.<span class="title function_">pipe</span>(R.<span class="title function_">prop</span>(p), R.<span class="title function_">lt</span>(R.<span class="property">__</span>, c)));</span><br><span class="line"></span><br><span class="line"><span class="comment">// :: Object -&gt;  Boolean</span></span><br><span class="line"><span class="keyword">const</span> ageUnder18 = <span class="title function_">propLt</span>(<span class="string">&quot;age&quot;</span>, <span class="number">18</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// :: [a] -&gt; b </span></span><br><span class="line"><span class="keyword">const</span> getAgeUnder18 = R.<span class="title function_">pipe</span>(</span><br><span class="line">  R.<span class="title function_">filter</span>(ageUnder18),</span><br><span class="line">  R.<span class="title function_">map</span>(R.<span class="title function_">pickAll</span>([<span class="string">&quot;name&quot;</span>, <span class="string">&quot;age&quot;</span>]))</span><br><span class="line">);</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>前面介绍了很多函数式编程的概念可以总结出函数式编程的优点：</p>
+<ul>
+<li><strong>代码简洁，开发快速</strong>：函数式编程大量使用函数的组合，函数的复用率很高，减少了代码的重复，因此程序比较短，开发速度较快。Paul Graham 在《黑客与画家》一书中写道：同样功能的程序，极端情况下，Lisp 代码的长度可能是 C 代码的二十分之一。</li>
+<li><strong>接近自然语言，易于理解</strong>：函数式编程大量使用声明式代码，基本都是接近自然语言的，加上它没有乱七八糟的循环，判断的嵌套，因此特别易于理解。</li>
+<li>**易于”并发编程”**：函数式编程没有副作用，所以函数式编程不需要考虑“死锁”（Deadlock），所以根本不存在“锁”线程的问题。</li>
+<li><strong>更少的出错概率</strong>：因为每个函数都很小，而且相同输入永远可以得到相同的输出，因此测试很简单，同时函数式编程强调使用纯函数，没有副作用，因此也很少出现奇怪的 Bug。</li>
+</ul>
+<p>因此，如果用一句话来形容函数式编程，应该是：<code>Less code, fewer bugs</code> 。因为写的代码越少，出错的概率就越小。人是最不可靠的，我们应该尽量把工作交给计算机。</p>
+<p>一眼看下来好像函数式可以解决所有的问题，但是实际上，函数式编程也不是什么万能的灵丹妙药。正因为函数式编程有以上特点，所以它天生就有以下缺陷：</p>
+<ul>
+<li><p><strong>性能</strong>：函数式编程相对于指令式编程，性能绝对是一个短板，因为它往往会对一个方法进行过度包装，从而产生上下文切换的性能开销。同时，在 JS 这种非函数式语言中，函数式的方式必然会比直接写语句指令慢（引擎会针对很多指令做特别优化）。就拿原生方法 <code>map</code> 来说，它就要比纯循环语句实现迭代慢 8 倍。</p>
+</li>
+<li><p><strong>资源占用</strong>：在 JS 中为了实现对象状态的不可变，往往会创建新的对象，因此，它对垃圾回收（Garbage Collection）所产生的压力远远超过其他编程方式。这在某些场合会产生十分严重的问题。</p>
+</li>
+<li><p><strong>递归陷阱</strong>：在函数式编程中，为了实现迭代，通常会采用递归操作，为了减少递归的性能开销，我们往往会把递归写成尾递归形式，以便让解析器进行优化。但是众所周知，JS 是不支持尾递归优化的（虽然 ES6 中将尾递归优化作为了一个规范，但是真正实现的少之又少，<a class="link"   href="https://link.juejin.cn/?target=http://kangax.github.io/compat-table/es6/"  title="http://kangax.github.io/compat-table/es6/">传送门 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>）</p>
+</li>
+<li><p>……</p>
+</li>
+</ul>
+<p>因此，在性能要求很严格的场合，函数式编程其实并不是太合适的选择。</p>
+<p>但是换种思路想，软件工程界从来就没有停止过所谓的银弹之争，却也从来没诞生过什么真正的银弹，各种编程语言层出不穷，各种框架日新月异，各种编程范式推陈出新，结果谁也没有真正的替代谁。</p>
+<p>学习函数式编程真正的意义在于：让你意识到在指令式编程，面向对象编程之外，还有一种全新的编程思路，一种用函数的角度去<strong>抽象</strong>问题的思路。学习函数式编程能大大丰富你的武器库，不然，_<strong>当你手中只有一个锤子，你看什么都像钉子</strong>_。</p>
+<p>我们完全可以在日常工作中将函数式编程作为一种辅助手段，在条件允许的前提下，借鉴函数式编程中的思路，例如：</p>
+<ul>
+<li>多使用纯函数减少副作用的影响。</li>
+<li>使用柯里化增加函数适用率。</li>
+<li>使用 Pointfree 编程风格，减少无意义的中间变量，让代码更且可读性。</li>
+<li>……</li>
+</ul>
+<p>最后，还是那句老生常谈的话：</p>
+<blockquote>
+<p>没有最好的，只有最适合的</p>
+</blockquote>
+<p>希望大家在实际项目中，能根据自己的需求选择最适合自己的编程范式，也希望通过学习这种新的编程范式，可以让我们在二进制的世界行走得更加游刃有余。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a class="link"   href="https://juejin.cn/post/6844903936378273799#heading-28" >简明函数式编程 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><br><a class="link"   href="https://www.bilibili.com/video/BV1Ue41117U8/?spm_id_from=333.337.top_right_bar_window_history.content.click" >雨轩讲函数式编程 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+]]></content>
+      <tags>
+        <tag>函数式编程</tag>
+        <tag>柯里化</tag>
+        <tag>函数组合</tag>
+      </tags>
   </entry>
 </search>
