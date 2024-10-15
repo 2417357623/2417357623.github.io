@@ -13,17 +13,25 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="http://example.com/tags/渲染原理/"/>
+    <link rel="canonical" href="http://example.com/2024/10/15/关于修改第三方组件遇到的坑/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta property="og:type" content="website">
-<meta property="og:title" content="Pina">
-<meta property="og:url" content="http://example.com/tags/%E6%B8%B2%E6%9F%93%E5%8E%9F%E7%90%86/index.html">
+        <meta name="description" content="前言该文章解决了针对 vue 的 scoped 情况下的对第三方样式修改问题。介绍了 scoped 的作用介绍了样式穿透的作用总结了三种不同情况修改样式的方法。 问题代码遇到 css 样式不生效的问题，部分代码如下 123456789101112131415161718192021&lt;el-select   v-model&#x3D;&quot;form.poolName&quot;   placeho">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于修改第三方组件遇到的坑">
+<meta property="og:url" content="http://example.com/2024/10/15/%E5%85%B3%E4%BA%8E%E4%BF%AE%E6%94%B9%E7%AC%AC%E4%B8%89%E6%96%B9%E7%BB%84%E4%BB%B6%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/index.html">
 <meta property="og:site_name" content="Pina">
+<meta property="og:description" content="前言该文章解决了针对 vue 的 scoped 情况下的对第三方样式修改问题。介绍了 scoped 的作用介绍了样式穿透的作用总结了三种不同情况修改样式的方法。 问题代码遇到 css 样式不生效的问题，部分代码如下 123456789101112131415161718192021&lt;el-select   v-model&#x3D;&quot;form.poolName&quot;   placeho">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-10-15T09:34:05.000Z">
+<meta property="article:modified_time" content="2024-10-15T09:34:58.721Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="样式穿透">
+<meta property="article:tag" content="scoped">
+<meta property="article:tag" content="第三方组件">
+<meta property="article:tag" content="样式修改">
 <meta name="twitter:card" content="summary">
     
     
@@ -36,7 +44,7 @@
     
     <title>
         
-            Tag: 渲染原理 -
+            关于修改第三方组件遇到的坑 -
         
         pinaShooter&#39;s Blog
     </title>
@@ -441,47 +449,261 @@ $logo-image-box-width = 34px
             <div class="main-content">
 
                 
-                    <div class="tag-container">
-	<div class="tag-name">
-		<i class="fa-solid fa-tag"></i>&nbsp;渲染原理
-	</div>
-	<div class="tag-post-list">
-		
-<div class="archive-list-container">
-    
-        <section class="archive-item mb-spacing-unit last:mb-0">
-            <div class="archive-item-header flex flex-row items-center mb-2">
-                <span class="archive-year font-semibold text-3xl mr-2">2024</span>
-                <span class="archive-year-post-count text-xs md:text-sm font-bold rounded-small bg-third-background-color py-[2px] px-[10px] border border-border-color">1</span>
-            </div>
+                    <div class="post-page-container flex relative justify-between box-border w-full h-full">
+    <div class="article-content-container">
+
+        <div class="article-title relative w-full">
             
-            <ul class="article-list pl-0 md:pl-8 text-lg leading-[1.5]">
+                <div class="w-full flex items-center pt-6 justify-start">
+                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">关于修改第三方组件遇到的坑</h1>
+                </div>
+            
+            </div>
+
+        
+            <div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+                <div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+                    <img src="/images/avatar.jpg">
+                </div>
+                <div class="info flex flex-col justify-between">
+                    <div class="author flex items-center">
+                        <span class="name text-default-text-color text-lg font-semibold">pinaShooter</span>
+                        
+                            <span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv1</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2024-10-15 17:34:05</span>
+        <span class="mobile">2024-10-15 17:34:05</span>
+        <span class="hover-info">Created</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2024-10-15 17:34:58</span>
+            <span class="mobile">2024-10-15 17:34:58</span>
+            <span class="hover-info">Updated</span>
+        </span>
+    
+
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
                 
-                    
-                    
-                         <!-- Close the previous LI if not the first item -->
-                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='09-28'>
-                    
-                    <a href="/2024/09/28/VUE%E6%98%AF%E5%A6%82%E4%BD%95%E6%B8%B2%E6%9F%93SPA%E7%9A%84/" class="block w-fit">
-                        <span class="article-title my-0.5 text-2xl">VUE是如何渲染SFC的</span>
-                    </a>
-                    
+                    <li>
+                        <a href="/tags/%E6%A0%B7%E5%BC%8F%E7%A9%BF%E9%80%8F/">样式穿透</a>&nbsp;
+                    </li>
                 
-                </li> <!-- Ensure the last item is properly closed -->
+                    <li>
+                        | <a href="/tags/scoped/">scoped</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E7%AC%AC%E4%B8%89%E6%96%B9%E7%BB%84%E4%BB%B6/">第三方组件</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E6%A0%B7%E5%BC%8F%E4%BF%AE%E6%94%B9/">样式修改</a>&nbsp;
+                    </li>
+                
             </ul>
-        </section>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
     
 </div>
 
-	</div>
+                    </div>
+                </div>
+            </div>
+        
+
+        
+
+
+        <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>该文章解决了针对 vue 的 scoped 情况下的对第三方样式修改问题。<br>介绍了 <code>scoped</code> 的作用<br>介绍了样式穿透的作用<br>总结了三种不同情况修改样式的方法。</p>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>代码遇到 css 样式不生效的问题，部分代码如下</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-select </span><br><span class="line">  v-model=&quot;form.poolName&quot; </span><br><span class="line">  placeholder=&quot;请选择资源组&quot; </span><br><span class="line">  style=&quot;width: 100%;&quot;</span><br><span class="line">  popper-class=&quot;custom-dropdown&quot;</span><br><span class="line">&gt;</span><br><span class="line">  &lt;el-option</span><br><span class="line">    v-for=&quot;item in options&quot;</span><br><span class="line">    :key=&quot;item.value&quot;</span><br><span class="line">    :label=&quot;item.label&quot;</span><br><span class="line">    :value=&quot;item.value&quot;</span><br><span class="line">  &gt;&lt;/el-option&gt;</span><br><span class="line">&lt;/el-select&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">	.custom-dropdown &#123;</span><br><span class="line">   width: 400px !important;</span><br><span class="line">   background-color: rgb(226, 21, 21);</span><br><span class="line">   border: 1px solid #ddd;</span><br><span class="line"> &#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure></div>
+
+<p><code>popper-class</code> 可以对 <code>select</code> 的下拉框部分设置样式，这是 <code>html</code> 原生的 <code>select</code> 无法做到的。但是当我设置 <code>style 为 scoped</code> 的时候，<code>vue</code> 会把这个样式和这个组件绑定在一起，最终编译完呈现如下效果</p>
+<p>![[Pasted image 20241015145631.png]]<br>![[Pasted image 20241015145600.png]]</p>
+<p>可以看到 <code>el-select</code> 的 <code>class=&quot;custom-dropdown&quot;</code> 加了一个独立属性 <code>data-v</code> ，并且选择器也是自动加上了属性选择变为了类【属性】的形式。<strong>给组件根元素加上特殊属性这就是 <code>scoped</code> 的作用</strong></p>
+<p>但是当我希望这个把这个 <code>custom-dropdown</code> 应用到 <code>popper-class=&quot;custom-dropdown&quot;</code> 的时候，就出现问题，因为这个 popper-class 最后编译解析出来是一个普通的类，这个类的元素并没有加上属性。也就导致我写的样式 <code>custom-dropdown</code> 没有被应用上去，最后在开发者工具上找不到这个样式的选择器</p>
+<p>![[Pasted image 20241015150028.png]]</p>
+<p>他没有被赋予表明是该组件样式的 <code>data-v</code> 所以该样式失效。</p>
+<p>一开始我以为是样式穿透问题，但是加了 <code>deep</code>  也没有用，原因是我选中的类所在的组件根本不是我组件的子组件，<code>option</code> 下拉框 自己另开了一片区域。</p>
+<h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><p>![[Pasted image 20241015170751.png]]</p>
+<p><code>el-select</code> 和 <code>option</code> 不属于一个组件，<code>option</code> 有一个独立的区域独立于 <code>app</code> 之外，也就是他的样式不受 <code>scoped</code> 的限制，一旦用到 <code>data-v</code> 的选择器（也就是我们在 scope 里面写样式），都选择不到 <code>option</code> 的样式。</p>
+<p>最后实现：</p>
+<div class="highlight-container" data-rel="Css"><figure class="iseeu highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="selector-class">.custom-dropdown</span> &#123;<span class="attribute">width</span>: <span class="number">1000px</span>;&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>我找到了专属于某个 select 的 option 下拉框区域的 ID。自己在全局的 css 样式中选择了这个专属样式，这才完成对此的修改。</p>
+<h2 id="样式穿透"><a href="#样式穿透" class="headerlink" title="样式穿透"></a>样式穿透</h2><p>前置条件使用了 <code>scoped</code> ，当父组件想修改子组件里面的样式的时候，如果直接写子组件的样式，除了子组件根节点的样式，别的都是识别不到的。</p>
+<p>要加上 <code>:：v-deep</code> 这个时候会给组件的作用域样式 <code>&lt;style scoped&gt;</code> 的每一个深度作用选择器前面的一个选择器单元增加一个属性选择器 <code>[data-v-实例标识]</code> ，示例：假设原选择器为 <code>.cls #id &gt;&gt;&gt; div</code>，则更改后的选择器为 <code>.cls #id[data-v-e0f690c0] div</code>；</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>通过这个问题，我了解了如何通过开发者工具定位一个 DOM 的样式，并且修改样式。</p>
+<p><strong>以下结论针对 vue 的 scoped。</strong></p>
+<p>如果是子组件的跟样式，直接修改</p>
+<p>如果是子组件里的某个样式，用 <code>::v-deep</code></p>
+<p>如果是特殊的，option 下拉框等，最终 html 呈现不在组件内部，用全局样式和特定选择器修改。</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;script setup&gt;</span><br><span class="line">import &#123; ElButton, ElSelect,ElOption &#125; from &#x27;element-plus&#x27;;</span><br><span class="line"></span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;el-button&gt;Default&lt;/el-button&gt;</span><br><span class="line">    &lt;el-select &gt;</span><br><span class="line">      &lt;el-option&gt;1&lt;/el-option&gt;</span><br><span class="line">      &lt;el-option&gt;2&lt;/el-option&gt;</span><br><span class="line">      &lt;el-option&gt;3&lt;/el-option&gt;</span><br><span class="line">      &lt;el-option&gt;4&lt;/el-option&gt;</span><br><span class="line">    &lt;/el-select&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">  .el-button&#123;</span><br><span class="line">    width: 500px;</span><br><span class="line">    display: block;</span><br><span class="line">  &#125;</span><br><span class="line">  ::v-deep .el-select__caret&#123;</span><br><span class="line">    color: red;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a class="link"   target="_blank" rel="noopener" href="https://juejin.cn/post/7023343999909888037" >scoped,deep的原理 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><br><a class="link"   target="_blank" rel="noopener" href="https://bilibili.com/video/BV1Jv41117QN/?spm_id_from=333.337.search-card.all.click&vd_source=115cedcdb1996c6483fb453252e441e6" >样式穿透 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+
+        </div>
+
+        
+            <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li><strong>Title:</strong> 关于修改第三方组件遇到的坑</li>
+        <li><strong>Author:</strong> pinaShooter</li>
+        <li><strong>Created at
+                :</strong> 2024-10-15 17:34:05</li>
+        
+            <li>
+                <strong>Updated at
+                    :</strong> 2024-10-15 17:34:58
+            </li>
+        
+        <li>
+            <strong>Link:</strong> https://redefine.ohevan.com/2024/10/15/关于修改第三方组件遇到的坑/
+        </li>
+        <li>
+            <strong>
+                License:
+            </strong>
+            
+
+            
+                This work is licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a>.
+            
+        </li>
+    </ul>
 </div>
 
-<div class="tag-paginator">
-	<div class="paginator">
-    <span class="page-number current">1</span>
+            </div>
+        
+
+        
+            <ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/%E6%A0%B7%E5%BC%8F%E7%A9%BF%E9%80%8F/">#样式穿透</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/scoped/">#scoped</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/%E7%AC%AC%E4%B8%89%E6%96%B9%E7%BB%84%E4%BB%B6/">#第三方组件</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/%E6%A0%B7%E5%BC%8F%E4%BF%AE%E6%94%B9/">#样式修改</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+
+        
+            <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+                
+                
+                    <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="next"
+                        rel="next"
+                        href="/2024/10/14/%E9%A6%96%E6%AC%A1%E8%AE%A4%E8%AF%86%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/"
+                        >
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">首次认识函数式编程</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+
+        
+            <div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+                <div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        Comments
+    </div>
+    
+
+        
+            
+    <div id="waline"></div>
+    <script type="module" data-swup-reload-script>
+      import { init } from '/js/libs/waline.mjs';
+
+      function loadWaline() {
+        init({
+          el: '#waline',
+          serverURL: 'https://example.example.com',
+          lang: 'zh-CN',
+          dark: 'body[class~="dark-mode"]',
+          reaction: false,
+          requiredMeta: ['nick', 'mail'],
+          emoji: [],
+          recaptchaV3Key: "wasd",
+          
+        });
+      }
+
+      if (typeof swup !== 'undefined') {
+        loadWaline();
+      } else {
+        window.addEventListener('DOMContentLoaded', loadWaline);
+      }
+    </script>
+
+
+
+        
+    
 </div>
 
+            </div>
+        
+    </div>
+
+    
+        <div class="toc-content-container">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div class="toc-title">On this page</div>
+        <div class="page-title">关于修改第三方组件遇到的坑</div>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98"><span class="nav-text">问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3"><span class="nav-text">解决</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B7%E5%BC%8F%E7%A9%BF%E9%80%8F"><span class="nav-text">样式穿透</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-text">参考资料</span></a></li></ol>
+
+    </div>
 </div>
+        </div>
+    
+</div>
+
 
 
                 
@@ -564,6 +786,27 @@ $logo-image-box-width = 34px
         </div>
     </div>
 
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="article-tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fa-regular fa-comments"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
     
 
     <div class="right-side-tools-container">
